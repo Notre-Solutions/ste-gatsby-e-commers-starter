@@ -54,6 +54,9 @@ const NavigationNonAuth = () => (
     <li>
       <Link to={ROUTES.ACCOUNT_BAG_COOKIES}>Bag</Link>
     </li>
+    <li>
+      <Link to={ROUTES.CART}>Cart</Link>
+    </li>
   </ul>
 );
 

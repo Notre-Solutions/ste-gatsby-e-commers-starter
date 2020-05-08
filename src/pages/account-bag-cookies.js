@@ -6,13 +6,17 @@ class BagPage extends Component {
   constructor() {
     super();
 
+    this.state = {
+      name: {},
+    };
+
     this.onAddName = this.onAddName.bind(this);
     this.onRemoveName = this.onRemoveName.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
   }
 
   componentWillMount() {
-    this.state = { name: cookie.load('name') || 'Nyasha' };
+    this.setState({ name: cookie.load('name') });
   }
 
   onAddName(name) {
@@ -21,12 +25,20 @@ class BagPage extends Component {
   }
 
   onChangeName() {
-    if (this.state.name === 'Nyasha') {
-      this.setState({ name: 'Ste' });
-      cookie.save('name', 'Ste', { path: '/' });
+    if (this.state.name.id === 'Ste') {
+      var item = {
+        id: 'Nyasha',
+        qty: 2,
+      };
+      this.setState({ name: item });
+      cookie.save('name', item, { path: '/' });
     } else {
-      this.setState({ name: 'Nyasha' });
-      cookie.save('name', 'Nyasha', { path: '/' });
+      var item = {
+        id: 'Ste',
+        qty: 1,
+      };
+      this.setState({ name: item });
+      cookie.save('name', item, { path: '/' });
     }
   }
 
@@ -42,7 +54,13 @@ class BagPage extends Component {
           <h1>BAG</h1>
           <p>This is your shopping bag</p>
           <button onClick={this.onChangeName}>Change Name</button>
-          <div>{name && <h1>Hello {name}!</h1>}</div>
+          <div>
+            {name && (
+              <h1>
+                Hello {name.id}! Number {name.qty}
+              </h1>
+            )}
+          </div>
         </Fragment>
       </Layout>
     );

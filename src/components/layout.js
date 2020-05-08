@@ -4,6 +4,8 @@ import Navigation from './Navigation';
 import getFirebase, { FirebaseContext } from './Firebase';
 import withAuthentication from './Session/withAuthentication';
 
+import { CartProvider } from '../components/cart';
+
 class Layout extends Component {
   state = {
     firebase: null,
@@ -24,7 +26,9 @@ class Layout extends Component {
   render() {
     return (
       <FirebaseContext.Provider value={this.state.firebase}>
-        <AppWithAuthentication {...this.props} />
+        <AppWithAuthentication
+          {...this.props}
+        ></AppWithAuthentication>
       </FirebaseContext.Provider>
     );
   }
@@ -32,9 +36,11 @@ class Layout extends Component {
 
 const AppWithAuthentication = withAuthentication(({ children }) => (
   <Fragment>
-    <Navigation />
-    <hr />
-    {children}
+    <CartProvider>
+      <Navigation />
+      <hr />
+      {children}
+    </CartProvider>
   </Fragment>
 ));
 

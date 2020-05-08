@@ -8,3 +8,4 @@ export const ADMIN = '/admin';
 export const ADMIN_DETAILS = '/admin/:id';
 export const ACCOUNT_DETAILS = '/account-detials';
 export const ACCOUNT_BAG_COOKIES = '/account-bag-cookies';
+export const CART = '/cart';

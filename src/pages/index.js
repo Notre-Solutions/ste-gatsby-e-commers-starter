@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import Layout from '../components/layout';
 
-const LandingPage = () => {
+function LandingPage() {
   return (
     <Fragment>
       <h1>Landing</h1>
@@ -11,7 +11,7 @@ const LandingPage = () => {
       </p>
     </Fragment>
   );
-};
+}
 
 export default () => (
   <Layout>
