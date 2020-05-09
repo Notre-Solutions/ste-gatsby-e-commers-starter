@@ -4,7 +4,7 @@ import Navigation from './Navigation';
 import getFirebase, { FirebaseContext } from './Firebase';
 import withAuthentication from './Session/withAuthentication';
 
-import { CartProvider } from '../components/cart';
+import { CartProvider, CartContext } from '../components/cart';
 
 class Layout extends Component {
   state = {

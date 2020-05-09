@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import CartContext from './context';
 import cookie from 'react-cookies';
 
@@ -10,49 +10,48 @@ class CartProvider extends Component {
     this.removeFromCart = this.removeFromCart.bind(this);
 
     this.state = {
-      cartItems: [],
+      cartItems: {},
       cartTotal: 0,
       addToCart: this.addToCart,
       removeFromCart: this.removeFromCart,
     };
   }
 
-  componentWillMount() {
-    this.setState({
-      cartItems: cookie.load('cartItems') || [],
-      cartTotal: cookie.load('cartTotals') || 0,
-    });
-  }
+  // componentWillMount() {
+  // this.setState({
+  //   cartItems: cookie.load('cartItems') || {},
+  //   cartTotal: cookie.load('cartTotals') || 0,
+  // });
+  // }
 
   saveInCookies(total, items) {
-    cookie.save('cartItems', items, { path: '/' });
-    cookie.save('cartTotals', total, { path: '/' });
+    // cookie.save('cartItems', items, { path: '/' });
+    // cookie.save('cartTotals', total, { path: '/' });
   }
 
-  addToCart = (quantity, cartItem, authUser) => {
+  addToCart = (quantity, skuId, price, authUser) => {
     const cartTotal =
-      Number(this.state.cartTotal) +
-      Number(quantity) * Number(cartItem.price);
-    console.log(this.state.cartTotal);
-    console.log(quantity);
-    console.log(cartItem.price);
-    console.log(cartTotal);
+      Number(this.state.cartTotal) + Number(quantity) * Number(price);
 
     var currentCartItems = this.state.cartItems;
-    var index = currentCartItems.indexOf(cartItem.id);
-    if (index === -1) {
-      cartItem.quantity = 1;
-      currentCartItems.push(cartItem);
+    if (currentCartItems[skuId]) {
+      currentCartItems[skuId].quantity += quantity;
+      console.log(currentCartItems);
     } else {
-      currentCartItems[index].quantity += 1;
+      currentCartItems[skuId] = { price, quantity };
+      console.log(currentCartItems);
     }
 
     this.saveInCookies(cartTotal, currentCartItems);
 
-    return this.setState(() => ({
+    console.log(cartTotal);
+    console.log(currentCartItems);
+    this.setState({
       cartTotal,
       cartItems: currentCartItems,
-    }));
+    });
+
+    console.log(this.state);
   };
 
   removeFromCart = (cartItem, authUser) => {
@@ -74,12 +73,9 @@ class CartProvider extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
-      <CartContext.Provider
-        value={{
-          ...this.state,
-        }}
-      >
+      <CartContext.Provider value={{ ...this.state }}>
         {this.props.children}
       </CartContext.Provider>
     );

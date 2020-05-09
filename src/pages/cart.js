@@ -3,7 +3,9 @@ import Layout from '../components/layout';
 import { CartContext } from '../components/cart';
 import { AuthUserContext } from '../components/Session';
 
-class BagPage extends Component {
+import Bag from '../components/cart/cartComponent';
+
+class Cart extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,7 +13,8 @@ class BagPage extends Component {
   render() {
     return (
       <Layout>
-        <AuthUserContext.Consumer>
+        <Bag />
+        {/* <AuthUserContext.Consumer>
           {(authUser) => (
             <CartContext.Consumer>
               {(context) => (
@@ -35,7 +38,7 @@ class BagPage extends Component {
               )}
             </CartContext.Consumer>
           )}
-        </AuthUserContext.Consumer>
+        </AuthUserContext.Consumer> */}
 
         {/* <Cart></Cart> */}
       </Layout>
@@ -43,4 +46,4 @@ class BagPage extends Component {
   }
 }
 
-export default BagPage;
+export default Cart;

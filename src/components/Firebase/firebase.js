@@ -1,21 +1,10 @@
-// const config = {
-//   apiKey: process.env.GATSBY_API_KEY,
-//   authDomain: process.env.GATSBY_AUTH_DOMAIN,
-//   databaseURL: process.env.GATSBY_DATABASE_URL,
-//   projectId: process.env.GATSBY_PROJECT_ID,
-//   storageBucket: process.env.GATSBY_STORAGE_BUCKET,
-//   messagingSenderId: process.env.GATSBY_MESSAGING_SENDER_ID,
-// };
-
 const config = {
-  apiKey: 'AIzaSyCp4w_7KsURZ2rwiZj8J1PrtKzxpC8GBoo',
-  authDomain: 'test-auth-22897.firebaseapp.com',
-  databaseURL: 'https://test-auth-22897.firebaseio.com',
-  projectId: 'test-auth-22897',
-  storageBucket: 'test-auth-22897.appspot.com',
-  messagingSenderId: '109491845503',
-  appId: '1:109491845503:web:c9cba07772a38ed80b824a',
-  measurementId: 'G-SD6TF7M692',
+  apiKey: process.env.GATSBY_API_KEY,
+  authDomain: process.env.GATSBY_AUTH_DOMAIN,
+  databaseURL: process.env.GATSBY_DATABASE_URL,
+  projectId: process.env.GATSBY_PROJECT_ID,
+  storageBucket: process.env.GATSBY_STORAGE_BUCKET,
+  messagingSenderId: process.env.GATSBY_MESSAGING_SENDER_ID,
 };
 
 class Firebase {

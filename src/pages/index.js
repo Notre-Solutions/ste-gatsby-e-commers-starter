@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 import Layout from '../components/layout';
 
 function LandingPage() {
